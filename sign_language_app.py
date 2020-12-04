@@ -157,69 +157,6 @@ def runApp(batchSize, threads, image_dir,model):
     fps = float(runTotal/timetotal)
     print("FPS=%.2f, total frames = %.0f , time = %.4f seconds" %(fps,runTotal,timetotal))
     
-    # threadImages=int(len(img)/threadnum)+1
-    # customThreadImages=int(len(custom_img)/threadnum)+1
-
-    # # set up the threads
-    # for i in range(threadnum):
-    #     startIdx = i*threadImages
-    #     if ( (len(listImage)-(i*threadImages)) > threadImages):
-    #         endIdx=(i+1)*threadImages
-    #     else:
-    #         endIdx=len(listImage)
-    #     t1 = threading.Thread(target=runDPU, args=(dpu,img[startIdx:endIdx],batchSize,results,i,threadImages))
-    #     threadAll.append(t1)
-
-    # # set up the custom threads
-    # for i in range(threadnum):
-    #     startIdx = i*customThreadImages
-    #     if ( (len(customListImage)-(i*customThreadImages)) > customThreadImages):
-    #         endIdx=(i+1)*customThreadImages
-    #     else:
-    #         endIdx=len(customListImage)
-    #     t2 = threading.Thread(target=runDPU, args=(dpu,custom_img[startIdx:endIdx],batchSize,custom_results,i,customThreadImages))
-    #     threadAll.append(t2)
-
-    # time1 = time.time()
-    # for x in threadAll:
-    #     x.start()
-    # for x in threadAll:
-    #     x.join()
-    # time2 = time.time()
-    # timetotal = time2 - time1
-
-    # fps = float(runTotal / timetotal)
-    # print("Throughput: %.2f FPS" %fps)
-
-    # # post-processing - compare results to ground truth labels
-    # ground truth labels are first part of image file name
-    # Note no J or Z on purpose
-    # result_guide=["A", "B", "C", "D", "E", "F", "G", "H", "I", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y"]
-    # correct=0
-    # wrong=0
-
-    # print("Custom Image Predictions:")
-    # for i in range(len(custom_img)):
-    #     gt = customListImage[i].split('.')
-    #     print("Custom Image: ", gt[0], " Predictions:", result_guide[custom_results[i]])
-
-
-    # with open('resultguide.json', 'r') as json_file:
-    #     ground_truth= json.load(json_file)
-
-    # for i in range(len(listImage)):
-    #     gt = listImage[i].split('.')
-    #     ground_truth_value=ground_truth.get(gt[0])
-    #     if (ground_truth_value==result_guide[results[i]]):
-    #         correct+=1
-    #         print(listImage[i], 'Correct { Ground Truth: ',ground_truth_value ,'Prediction: ', result_guide[results[i]], '}')
-    #     else:
-    #         wrong+=1
-    #         print(listImage[i], 'Wrong { Ground Truth: ',ground_truth_value ,'Prediction: ', result_guide[results[i]], '}')
-
-    # acc = (correct/len(listImage))*100
-    # print('Correct:',correct,'Wrong:',wrong,'Accuracy: %.2f' %acc,'%')
-
     return
 
 
